@@ -23,7 +23,13 @@ echo "Installing ZeroTier One package"
 apt update
 apt install zerotier-one=1.16.1
 
-echo -n "Do you want to join a zerotier-one network now?[Y/n]:"
+echo -n "Set ZeroTier primary port (0~65535, default is 9993, 0 for):"
+read primaryport
+if [ -z "$primaryport" ]; then
+    primaryport="9993"
+fi
+
+echo -n "Would you like to join a zerotier-one network now?[Y/n]:"
 read -n 1 joinnetwork
 echo
 
